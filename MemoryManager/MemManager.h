@@ -1,20 +1,12 @@
 #pragma once
-#include <iostream>
-#include <vector>
+
+#include "MemControlBlock.h"
+#include "SmallObjAllocator.h"
 
 
 
-class Complex
-{
-public:
-    Complex(double a, double b) : r(a), c(b) {}
-private:
-    double r; // Real Part
-    double c; // Complex Part
-};
 
-
-#ifdef CUSTOM_MEM_MANAGER
+#ifdef CUSTOM_MEM_MANAGER_V1
 
 class IMemoryManager
 {
@@ -118,7 +110,84 @@ void operator delete[](void* ptr)
     gMemoryManager.free(ptr);
 }
 
-#endif // CUSTOM_MEM_MANAGER
+#endif // CUSTOM_MEM_MANAGER_V1
+
+#ifdef CUSTOM_MEM_MANAGER_V2
+
+inline small_object_allocator::SmallObjAllocator& GetSmallMemoryAllocator()
+{
+    static small_object_allocator::SmallObjAllocator single =
+        small_object_allocator::SmallObjAllocator(DEFAULT_CHUNK_SIZE, 64);
+        
+    return single;
+}
+
+inline MemControlBlockAllocator& GetGenericAllocator()
+{
+    static MemControlBlockAllocator single(209715200);
+    return single;
+}
+
+template<typename T>
+void* SM_NEW()
+{
+    return GetSmallMemoryAllocator().Allocate(sizeof(T));
+}
+
+template<typename T, std::size_t length>
+void* SM_NEW_A()
+{
+    return GetSmallMemoryAllocator().Allocate(sizeof(T) * length);
+}
+
+template<typename T>
+void SM_DELETE(T* p)
+{
+    p->~T();
+    GetSmallMemoryAllocator().Deallocate(p, sizeof(T));
+}
+
+template<typename T>
+void SM_DELETE_A(T* p, std::size_t length)
+{
+    for(std::size_t i = 0; i < length; ++i)
+    {
+        p[i].~T();
+    }
+    GetSmallMemoryAllocator().Deallocate(p, sizeof(T)*length);
+}
+
+
+
+template<typename T>
+void* GM_NEW()
+{
+    return GetGenericAllocator().Allocate(sizeof(T));
+}
+
+template<typename T, std::size_t length>
+void* GM_NEW_A()
+{
+    return GetGenericAllocator().Allocate(sizeof(T) * length);
+}
+
+template<typename T>
+void GM_DELETE(T* p)
+{
+    p->~T();
+    GetGenericAllocator().Deallocate(p);
+}
+
+template<typename T>
+void GM_DELETE_A(T* p, std::size_t length)
+{
+    for (std::size_t i = 0; i < length; ++i)
+    {
+        p[i].~T();
+    }
+    GetGenericAllocator().Deallocate(p);
+}
+
 
 
 
@@ -126,65 +195,23 @@ void operator delete[](void* ptr)
 
 
 /*
-void* MM_NEW(size_t size)
+void* operator new(std::size_t sz)
 {
-    return malloc(size);
+    return SM_NEW(sz);
 }
 
-void MM_DELETE(void* ptr)
+void* operator new[](std::size_t sz)
 {
-    free(ptr);
+    return SM_NEW_A(sz);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-struct Chunk
+void operator delete(void* p, std::size_t sz)
 {
-    void Init(std::size_t blockSize, unsigned char blocks);
-    void* Allocate(std::size_t blockSize);
-    void Deallocate(void* p, std::size_t blockSize);
-    unsigned char* pData_;
-    unsigned char
-        firstAvailableBlock_,
-        blocksAvailable_;
-};
-
-class FixedAllocator
+    SM_DELETE(p, sz);
+}
+void operator delete[](void* p, std::size_t sz)
 {
-private:
-    std::size_t blockSize_;
-    unsigned char numBlocks_;
-    typedef std::vector<Chunk> Chunks;
-    Chunks chunks_;
-    Chunk   * allocChunk_;
-    Chunk* deallocChunk_;
-};
+    SM_DELETE_A(p, sz);
+}
+ */
 
-class SmallObjAllocator
-{
-public:
-    SmallObjAllocator(
-        std::size_t chunkSize,
-        std::size_t maxObjectSize);
-    void* Allocate(std::size_t numBytes);
-    void Deallocate(void* p, std::size_t size);
-private:
-    std::vector<FixedAllocator> pool_;
-};*/
+#endif // CUSTOM_MEM_MANAGER_V2

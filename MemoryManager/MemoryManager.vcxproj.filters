@@ -13,14 +13,59 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Small Object Allocator">
+      <UniqueIdentifier>{69051f41-d3b6-403c-b1ae-105070bf3266}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Small Object Allocator">
+      <UniqueIdentifier>{b2799887-79cb-433b-a0f1-e73be28a04ea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FixedAllocator.cpp">
+      <Filter>Source Files\Small Object Allocator</Filter>
+    </ClCompile>
+    <ClCompile Include="Chunk.cpp">
+      <Filter>Source Files\Small Object Allocator</Filter>
+    </ClCompile>
+    <ClCompile Include="SmallObjAllocator.cpp">
+      <Filter>Source Files\Small Object Allocator</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MemManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Chunk.h">
+      <Filter>Header Files\Small Object Allocator</Filter>
+    </ClInclude>
+    <ClInclude Include="FixedAllocator.h">
+      <Filter>Header Files\Small Object Allocator</Filter>
+    </ClInclude>
+    <ClInclude Include="SmallObjAllocator.h">
+      <Filter>Header Files\Small Object Allocator</Filter>
+    </ClInclude>
+    <ClInclude Include="MemControlBlock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ComplexTypeA.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ComplexTypeC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ComplexTypeD.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ComplexTypeB.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ComplexTypeE.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

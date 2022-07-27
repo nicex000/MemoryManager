@@ -7,18 +7,24 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MemoryManager", "MemoryMana
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Custom mem manager debug|x64 = Custom mem manager debug|x64
-		Custom mem manager debug|x86 = Custom mem manager debug|x86
+		CMM_V1_Debug|x64 = CMM_V1_Debug|x64
+		CMM_V1_Debug|x86 = CMM_V1_Debug|x86
+		CMM_V2_Debug|x64 = CMM_V2_Debug|x64
+		CMM_V2_Debug|x86 = CMM_V2_Debug|x86
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{43517E8E-69A4-43F8-A725-98B3C8141B75}.Custom mem manager debug|x64.ActiveCfg = Custom mem manager debug|x64
-		{43517E8E-69A4-43F8-A725-98B3C8141B75}.Custom mem manager debug|x64.Build.0 = Custom mem manager debug|x64
-		{43517E8E-69A4-43F8-A725-98B3C8141B75}.Custom mem manager debug|x86.ActiveCfg = Custom mem manager debug|Win32
-		{43517E8E-69A4-43F8-A725-98B3C8141B75}.Custom mem manager debug|x86.Build.0 = Custom mem manager debug|Win32
+		{43517E8E-69A4-43F8-A725-98B3C8141B75}.CMM_V1_Debug|x64.ActiveCfg = CMM_V1_Debug|x64
+		{43517E8E-69A4-43F8-A725-98B3C8141B75}.CMM_V1_Debug|x64.Build.0 = CMM_V1_Debug|x64
+		{43517E8E-69A4-43F8-A725-98B3C8141B75}.CMM_V1_Debug|x86.ActiveCfg = CMM_V1_Debug|Win32
+		{43517E8E-69A4-43F8-A725-98B3C8141B75}.CMM_V1_Debug|x86.Build.0 = CMM_V1_Debug|Win32
+		{43517E8E-69A4-43F8-A725-98B3C8141B75}.CMM_V2_Debug|x64.ActiveCfg = CMM_V2_Debug|x64
+		{43517E8E-69A4-43F8-A725-98B3C8141B75}.CMM_V2_Debug|x64.Build.0 = CMM_V2_Debug|x64
+		{43517E8E-69A4-43F8-A725-98B3C8141B75}.CMM_V2_Debug|x86.ActiveCfg = CMM_V2_Debug|Win32
+		{43517E8E-69A4-43F8-A725-98B3C8141B75}.CMM_V2_Debug|x86.Build.0 = CMM_V2_Debug|Win32
 		{43517E8E-69A4-43F8-A725-98B3C8141B75}.Debug|x64.ActiveCfg = Debug|x64
 		{43517E8E-69A4-43F8-A725-98B3C8141B75}.Debug|x64.Build.0 = Debug|x64
 		{43517E8E-69A4-43F8-A725-98B3C8141B75}.Debug|x86.ActiveCfg = Debug|Win32
