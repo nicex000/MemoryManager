@@ -35,6 +35,7 @@ int main()
     std::cout << std::endl << std::endl;
 
 
+    TimeTest(STLSmallObjAllocator, "STL::SmallObjectAllocator");
 
 
     

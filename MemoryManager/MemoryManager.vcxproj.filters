@@ -36,6 +36,9 @@
     <ClCompile Include="Tests.h">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="STLSmallObjAllocator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MemManager.h">
@@ -67,6 +70,9 @@
     </ClInclude>
     <ClInclude Include="ComplexTypeE.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="STLSmallObjAllocator.h">
+      <Filter>Header Files\Small Object Allocator</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -5,8 +5,10 @@
 #include <iostream>
 #include <iomanip>
 #include <chrono>
+#include <list>
 
 #include "MemManager.h"
+#include "STLSmallObjAllocator.h"
 
 #include "ComplexTypeA.h"
 //#include "ComplexTypeB.h"
@@ -222,6 +224,24 @@ inline void SmallObjectObjectTest()
             delete soArray[j];
         }
     }
+}
+
+
+inline void STLSmallObjAllocator()
+{
+    std::list
+        <
+        int,
+        small_object_allocator::STLSmallObjAllocator
+        <
+        int,
+        small_object_allocator::STLSmallObjectAllocPolicy
+        <
+        int,
+        64
+        >>> soList;
+
+    soList.push_back(3);
 }
 
 
